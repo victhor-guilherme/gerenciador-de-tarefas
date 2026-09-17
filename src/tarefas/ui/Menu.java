@@ -17,6 +17,18 @@ public class Menu {
         this.gerenciador = gerenciador;
     }
 
+    private int lerInteiro(String mensagem) {
+        while (true) {
+            System.out.print(mensagem);
+
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Digite um número inteiro.");
+            }
+        }
+    }
+
 
     public void exibirOpcoes(){
         System.out.println(
@@ -37,14 +49,18 @@ public class Menu {
             System.out.print("Escolha uma opção: ");
             opcao = Integer.parseInt(scanner.nextLine());
 
-            switch (opcao) {
-                case 1 -> cadastrarTarefa();
-                case 2 -> listarTarefas();
-                case 3 -> buscarTarefa();
-                case 4 -> concluirTarefa();
-                case 5 -> excluirTarefa();
-                case 0 -> System.out.println("Programa encerrado.");
-                default -> System.out.println("Opção inválida.");
+            try{
+                switch (opcao) {
+                    case 1 -> cadastrarTarefa();
+                    case 2 -> listarTarefas();
+                    case 3 -> buscarTarefa();
+                    case 4 -> concluirTarefa();
+                    case 5 -> excluirTarefa();
+                    case 0 -> System.out.println("Programa encerrado.");
+                    default -> System.out.println("Opção inválida.");
+                }
+            } catch (IllegalArgumentException | IllegalStateException e){
+                System.out.println("Erro: " + e.getMessage());
             }
         } while (opcao != 0);}
 
