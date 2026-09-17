@@ -67,6 +67,10 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void exibirDetalhes(){
         System.out.println("→ Titulo da tarefa: " + this.titulo);
         System.out.println("→ ID da tarefa: " + this.id);
